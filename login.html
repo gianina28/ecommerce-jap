@@ -40,10 +40,22 @@
 <body class="text-center">
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 08/08/2021).</p>
+      <h4 class="alert-heading">¡Bienvenido! :)</h4>
+      <p>Para continuar, ingresa usuario y contraseña.</p>
       <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+      <form> 
+         
+        <div class="container">   
+            <label>Usuario : </label>   
+            <input type="text" placeholder="Ingresa usuario" name="username" required>  
+            <label>Password : </label>   
+            <input type="password" placeholder="Ingresa contraseña" name="password" required>  
+            <button type="submit">Login</button>   
+            <input type="checkbox" checked="checked"> Remember me   
+            <button type="button" class="cancelbtn"> Cancel</button>   
+            Forgot <a href="#"> password? </a>   
+        </div>   
+    </form>     
     </div>
   </div>
 
