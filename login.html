@@ -43,19 +43,23 @@
       <h4 class="alert-heading">¡Bienvenido! :)</h4>
       <p>Para continuar, ingresa usuario y contraseña.</p>
       <hr>
-      <form> 
+      <p class="mb-0"> 
+        <form> 
          
         <div class="container">   
             <label>Usuario : </label>   
             <input type="text" placeholder="Ingresa usuario" name="username" required>  
             <label>Password : </label>   
             <input type="password" placeholder="Ingresa contraseña" name="password" required>  
-            <button type="submit">Login</button>   
+            <br> <button formaction = "./index.html" type="submit" id="sendUsername"> Login</button>
             <input type="checkbox" checked="checked"> Remember me   
             <button type="button" class="cancelbtn"> Cancel</button>   
-            Forgot <a href="#"> password? </a>   
+            Forgot <a href="#"> password? </a> 
+            
+            
         </div>   
-    </form>     
+    </form>    
+   </p>
     </div>
   </div>
 
