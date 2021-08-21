@@ -21,18 +21,33 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		   let soldCount = data.soldCount
 			
 		   let table = "";
-
 			for(let i = 0;i < data.length;i++) {
-					table += `<div class="table-row">
-			   <div class="table data"> ${data[i].name}</div>
-			   <div class="table data">${data[i].description}</div>
-			   <div class="table data">${data[i].cost}</div>
-			   <div class="table data">${data[i].currency}</div>
-			   <div class="table data">${data[i].soldCount}</div>
-               <div class= "table data"> <img src="${data[i].imgSrc}"/></div>
-			   </div>`
+					table += `
+					<div class="border container-fluid">
+					  <div class="row">
+						<div class="col-4"><img src="${data[i].imgSrc}" width="208" height="104"/></div>
+						<div class="col-8">
+							<div class="row">
+								<div class="col">
+									<div class="row">
+										<div class="col-8">${data[i].name}</div>
+										<div class="col-4">${data[i].currency} ${data[i].cost}</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									${data[i].description}
+								</div>
+								<div class="col-12">
+									${data[i].soldCount}
+								</div>
+							</div>
+						</div>
+					  </div>
+					</div>
+			    `
 			}
-		   
 
 		   document.getElementById("table-content").innerHTML += table;
 		})
