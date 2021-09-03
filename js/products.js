@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		document.getElementById("Desc").addEventListener("click", ()=> {
 			ordenarPrecio()
 		});
+		document.getElementById("Venta").addEventListener("click", ()=> {
+			ordenarVenta()
+		});
 	}
 )
 
@@ -113,6 +116,18 @@ function ordenarPrecio () {
 			return -1;
 		}
 		if (a.cost < b.cost ) {
+			return 1;
+		}
+		return 0;
+	});
+	mostrar(miLista);
+};
+function ordenarVenta () {
+	miLista.sort (function(a,b){
+		if (a.soldCount > b.soldCount ) {
+			return -1;
+		}
+		if (a.soldCount < b.soldCount ) {
 			return 1;
 		}
 		return 0;
