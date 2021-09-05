@@ -13,13 +13,6 @@ let btn = document.getElementById("btn");
 		let usrLink = document.getElementById("usuario.pag");
 		if (usrLink) {usrLink.innerHTML = "Usuario : "+ usr;}
 	}
-    document.addEventListener ("DOMContentLoaded", function(e){
-        document.getElementById("btn").addEventListener("click", function (e) {
-            validarFormulario (e);
-        }); 
-    });
-
-
 function validarFormulario (evento) {
 	evento.preventDefault();
 	let user= document.getElementById ("Usuario").value
@@ -42,8 +35,5 @@ function validarFormulario (evento) {
 		window.location.href = "./home.html";
     
 	}
-    document.addEventListener("DOMContentLoaded", function (e) {
-        document.getElementById("usuario.pag").innerHTML =localstorage.getItem("Usuario");
-    })
     
 };
