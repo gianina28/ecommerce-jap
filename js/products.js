@@ -30,7 +30,7 @@ function mostrar (data) {
 		table+= `
 		<div class="border container-fluid">
 		  <div class="row">
-			<div class="col-4"><img src="${data[i].imgSrc}" width="208" height="104"/></div>
+			<div class="col-4"><a href="./product-info.html"><img src="${data[i].imgSrc}" width="208" height="104"/></a></div>
 			<div class="col-8">
 				<div class="row">
 					<div class="col">
