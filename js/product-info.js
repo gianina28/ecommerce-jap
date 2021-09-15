@@ -65,7 +65,7 @@ function mostrar (data) {
                         <h5 class="mr-2">${data[i].user}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">${data[i].dateTime}</span>
                     </div>
                     <div class="comment-text-sm"><span>${data[i].description}</span></div>
-					<div class= "rating"><span class="fa fa-star checked">${data[i].score}</span></div>
+					<div class= "rating"><span class="fa fa-star"><span class="fa fa-star"><span class="fa fa-star"><span class="fa fa-star"><span class="fa fa-star">${data[i].score}</span></div>
                         </div>
                     </div>
                 </div>
