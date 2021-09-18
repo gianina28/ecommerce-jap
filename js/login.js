@@ -27,7 +27,7 @@ function validarFormulario (evento) {
         return;
 	}
 	else  {
-		let fin = user.indexOf("@");
+		let fin
 		let Usuario = user.substring (0, fin);
 		localStorage.setItem ("Usuario",Usuario);
 		console.log(Usuario);

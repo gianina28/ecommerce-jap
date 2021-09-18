@@ -63,14 +63,19 @@ function mostrar (data) {
                 <div class="commented-section mt-2">
                     <div class="d-flex flex-row align-items-center commented-user">
                         <h5 class="mr-2">${data[i].user}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">${data[i].dateTime}</span>
-                    </div>
-                    <div class="comment-text-sm"><span>${data[i].description}</span></div>
-					<div class= "rating"><span class="fa fa-star"><span class="fa fa-star"><span class="fa fa-star"><span class="fa fa-star"><span class="fa fa-star">${data[i].score}</span></div>
+                        </div>
+                        <div class="comment-text-sm"><span>${data[i].description}</span></div>
+                        <div class= "rating">`
+                        for (let j= 0;j<data[i].score;j++ ) {
+                            table += `<span class="fa fa-star checked">`
+                        }
+                        table +=
+                        `</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-		`
-	}
+            `
+        }
    document.getElementById("table-content").innerHTML = table;
 }
 
