@@ -1,7 +1,15 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-
+let productCost = 0;
+let productCount = 0;
+let comissionPercentage = "-";
+let MONEY_SYMBOL = "$";
+let DOLLAR_CURRENCY = "Dólares (USD)";
+let PESO_CURRENCY = "Pesos Uruguayos (UYU)";
+let DOLLAR_SYMBOL = "USD ";
+let PESO_SYMBOL = "UYU ";
+let PERCENTAGE_SYMBOL = '%'
 let miLista;
 document.addEventListener("DOMContentLoaded", function (e) {
 
@@ -17,17 +25,36 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		})
 		
 	}
+	
+	
 )
-
-
 function onchangeCantidadElegida(){
 	let articulo = miLista.articles[0];
 	let cantidad = document.getElementById("cantidadelegida").value;
 	let total = document.getElementById("totalId");
 	let subtotal = document.getElementById("subtotalId");
-	total.innerHTML = "Total : " + (cantidad * articulo.unitCost);
-	subtotal.innerHTML = (articulo.currency+""+articulo.unitCost +"X"+cantidad);
+	total.innerHTML =  (articulo.currency+""+(cantidad * articulo.unitCost));
+	subtotal.innerHTML = (articulo.currency+""+(cantidad * articulo.unitCost));
+ 
+
 }
+function updateTotalCosts(){
+	let articulo = miLista.articles[0];
+	let cantidad = document.getElementById("cantidadelegida").value;
+	let total = document.getElementById("totalId");
+	let subtotal = document.getElementById("subtotalId");
+  let comissionCostHTML = document.getElementById("comissionText");
+
+    let unitCostToShow = MONEY_SYMBOL + (cantidad * articulo.unitCost);
+    let comissionToShow = Math.round((comissionPercentage *(cantidad * articulo.unitCost)));
+
+	total.innerHTML = (articulo.currency+""+((cantidad * articulo.unitCost)+comissionToShow));
+	subtotal.innerHTML = (articulo.currency+""+(cantidad * articulo.unitCost));
+	
+    comissionCostHTML.innerHTML = unitCostToShow;
+    comissionCostHTML.innerHTML = comissionToShow;
+   
+  }
 function mostrar (data) {
 	let table = "";
 	for(let i = 0;i < data.articles.length;i++) {
@@ -48,10 +75,11 @@ function mostrar (data) {
                     <div class="row main align-items-center">
                         <div class="col-2"><img class="img-fluid" src="file:///home/ceibal/Escritorio/Ejercicios/Obligatorio/Proyecto/ecommerce-jap/img/tree1.jpg"></div>
                         <div class="col">
-                            <div class="row text-muted">Nombre:</div>
+                            <div class="row">Nombre:</div>
                             <div class="row">${data.articles[i].name}</div>
                         </div>
                         <div class="col"> 
+                        <div class="row">Cantidad:</div>
                         <select id="cantidadelegida" value='' class="form-control" onchange="onchangeCantidadElegida()"> 
 						<option value="" selected disabled hidden>${data.articles[i].count}</option> 
                         <option>1</option> 
@@ -66,48 +94,73 @@ function mostrar (data) {
 
                         </select>
                     </div>
+                    <div class="col">Costo por unidad:</div>
                         <div class="col">${data.articles[i].currency}${data.articles[i].unitCost}<span class="close">&#10005;</span></div>
                     </div>
-                </div>
-                <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
-            </div>
+                
             <div class="col-md-4 summary">
-                <div>
-                    <h5><b id="totalId">Total</b></h5>
-                </div>
+                
                 <hr>
-                <div class="row">
-                    <div class="col" style="padding-left:0;">Cantidad</div>
-                    <div class="col text-right">${data.articles[i].count}</div>
-                    <p>Subtotal</p>
-                    <div id="subtotalId" class="col text-right">${data.articles[i].currency}${data.articles[i].unitCost}</div>
-                </div>
-                <form>
-                    <p>Envío</p> 
-                    <div class="d-block my-3">
-                <div class="custom-control custom-radio">
-                  <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
-                  <label class="custom-control-label" for="goldradio">Gold (13%)</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                  <label class="custom-control-label" for="premiumradio">Premium (7%)</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                  <label class="custom-control-label" for="standardradio">Estándar (3%)</label>
-                </div>
-                <div class="row">
-                  <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Ver condiciones</button>
-                </div>
-              </div>
-                    <div class="col">TOTAL PRICE</div>
-                    <div class="col text-right">&euro; 137.00</div>
+                <h5 class="mb-3">Tipo de envío</h5>
+                <div class="d-block my-3">
+                  <div class="custom-control custom-radio">
+                    <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
+                    <label class="custom-control-label" for="goldradio">Gold (13%)</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
+                    <label class="custom-control-label" for="premiumradio">Premium (7%)</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+                    <label class="custom-control-label" for="standardradio">Estándar (3%)</label>
+                  </div>
+                <hr class="mb-4">
+              <h4 class="mb-3">Costos</h4>
+              <ul class="list-group mb-3">
+                  <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                      <h6 class="my-0">Subtotal</h6>
+                      <small class="text-muted">Unitario del producto</small>
+                    </div>
+                    <span class="text-muted" id="subtotalId">${data.articles[i].currency}${data.articles[i].unitCost}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                      <h6 class="my-0">Costo de envío ($)</h6>
+                      <small class="text-muted">Según el tipo de publicación</small>
+                    </div>
+                    <span class="text-muted" id="comissionText">-</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span>Total</span>
+                    <strong id="totalCostText">-</strong>
+                    <span class="text-muted" id="totalId">-</span>
+                    
+                  </li>
+                </ul>
         </div>
     </div>
 				
 		`
 	}
+    document.getElementById("table-cart").innerHTML = table;
+	document.getElementById("goldradio").addEventListener("change", function(){
+		console.log("A");
+		comissionPercentage = 0.13;
+		updateTotalCosts();
+	  });
+	  
+	  document.getElementById("premiumradio").addEventListener("change", function(){
+		comissionPercentage = 0.07;
+		console.log("A");
+		updateTotalCosts();
+	  });
+	  
+	  document.getElementById("standardradio").addEventListener("change", function(){
+		comissionPercentage = 0.03;
+		console.log("A");
+		updateTotalCosts();
+	  });
 
-   document.getElementById("table-cart").innerHTML = table;
-}
+  }
