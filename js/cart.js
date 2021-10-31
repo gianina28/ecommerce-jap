@@ -7,9 +7,7 @@ let comissionPercentage = "-";
 let MONEY_SYMBOL = "$";
 let DOLLAR_CURRENCY = "Dólares (USD)";
 let PESO_CURRENCY = "Pesos Uruguayos (UYU)";
-let DOLLAR_SYMBOL = "USD ";
 let PESO_SYMBOL = "UYU ";
-let PERCENTAGE_SYMBOL = '%'
 let miLista;
 document.addEventListener("DOMContentLoaded", function (e) {
 

@@ -28,28 +28,18 @@ function mostrar (data) {
 	let table = "";
 	for(let i = 0;i < data.length;i++) {
 		table+= `
-		<div class="border container-fluid">
-		  <div class="row">
-			<div class="col-4"><a href="./product-info.html"><img src="${data[i].imgSrc}" width="208" height="104"/></a></div>
-			<div class="col-8">
-				<div class="row">
-					<div class="col">
-						<div class="row">
-							<div class="col-8">${data[i].name}</div>
-							<div class="col-4">${data[i].currency} ${data[i].cost}</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						${data[i].description}
-					</div>
-					<div class="col-12">
-						${data[i].soldCount}
-					</div>
-				</div>
-			</div>
+		<div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+		    <div class="col-md-4">
+			<a href="./product-info.html"><img class="bd-placeholder-img card-img-top" src="${miLista[i].imgSrc}"></a>
+		     <h3 class="m-3">${miLista[i].name} ${miLista[i].currency} ${miLista[i].cost} (${miLista[i].soldCount})</h3>
+		     <div class="card-body">
+			 <p class="card-text">${miLista[i].description}</p>
+		     </div>
+	        </div>
 		  </div>
+		</div>
 		</div>
 		`
 	}
@@ -69,30 +59,22 @@ document.getElementById("rangeFilterCount").addEventListener ("click", () => {
 				if (producto.cost >= min && producto.cost <= max) {
 				
 					table += `
-							<div class="border container-fluid">
-							  <div class="row">
-								<div class="col-4"><img src="${miLista[i].imgSrc}" width="208" height="104"/></div>
-								<div class="col-8">
-									<div class="row">
-										<div class="col">
-											<div class="row">
-												<div class="col-8">${miLista[i].name}</div>
-												<div class="col-4">${miLista[i].currency} ${miLista[i].cost}</div>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-12">
-											${miLista[i].description}
-										</div>
-										<div class="col-12">
-											${miLista[i].soldCount}
-										</div>
-									</div>
-								</div>
-							  </div>
-							</div>
-						`
+				
+					<div class="album py-5 bg-light">
+					<div class="container">
+					  <div class="row">
+						<div class="col-md-4">
+						<a href="./product-info.html"><img class="bd-placeholder-img card-img-top" src="${miLista[i].imgSrc}"></a>
+						 <h3 class="m-3">${miLista[i].name} ${miLista[i].currency} ${miLista[i].cost} (${miLista[i].soldCount})</h3>
+						 <div class="card-body">
+						 <p class="card-text">${miLista[i].description}</p>
+						 </div>
+						 </a>
+						</div>
+					  </div>
+					</div>
+					</div>
+		`
 				}
 			}
 			document.getElementById("table-content").innerHTML = table;
