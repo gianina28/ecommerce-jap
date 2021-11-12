@@ -54,7 +54,35 @@
     </div>
   </nav>
   
+  <form>
     <div class="table-content" id= "table-cart"></div>
+    <hr class="mb-4">
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label for="zip">Calle</label>
+        <input type="textarea" class="form-control" id="street" required>
+        <div class="invalid-feedback">
+          El costo debe ser mayor que 0.
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+          <label for="state">Número</label>
+          <input type="textarea" class="form-control" id="housenumber" required>
+          <div class="invalid-feedback">
+            Ingresa una categoría válida.
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <label for="zip">Esquina</label>
+        <input type="textarea" class="form-control" id="corner" required>
+        <div class="invalid-feedback">
+          El costo debe ser mayor que 0.
+        </div>
+      </div>
+              <button class="btn btn-primary btn-lg" type="submit">Comprar</button>
+            </form>
+            
     
 
   <div id="spinner-wrapper">

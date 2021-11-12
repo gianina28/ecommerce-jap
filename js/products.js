@@ -28,10 +28,7 @@ function mostrar (data) {
 	let table = "";
 	for(let i = 0;i < data.length;i++) {
 		table+= `
-		<div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-		    <div class="col-md-4">
+			<div class="col-md-4">
 			<a href="./product-info.html"><img class="bd-placeholder-img card-img-top" src="${miLista[i].imgSrc}"></a>
 		     <h3 class="m-3">${miLista[i].name} ${miLista[i].currency} ${miLista[i].cost} (${miLista[i].soldCount})</h3>
 		     <div class="card-body">
@@ -59,10 +56,6 @@ document.getElementById("rangeFilterCount").addEventListener ("click", () => {
 				if (producto.cost >= min && producto.cost <= max) {
 				
 					table += `
-				
-					<div class="album py-5 bg-light">
-					<div class="container">
-					  <div class="row">
 						<div class="col-md-4">
 						<a href="./product-info.html"><img class="bd-placeholder-img card-img-top" src="${miLista[i].imgSrc}"></a>
 						 <h3 class="m-3">${miLista[i].name} ${miLista[i].currency} ${miLista[i].cost} (${miLista[i].soldCount})</h3>
