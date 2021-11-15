@@ -70,6 +70,7 @@ function mostrar (data) {
                         <div class="col align-self-center text-right text-muted"></div>
                     </div>
                 </div>
+                
                 <div class="row border-top border-bottom">
                     <div class="row main align-items-center">
                         <div class="col-2"><img class="img-fluid" src="file:///home/ceibal/Escritorio/Ejercicios/Obligatorio/Proyecto/ecommerce-jap/img/tree1.jpg"></div>
@@ -93,6 +94,7 @@ function mostrar (data) {
 
                         </select>
                     </div>
+                    
                     <div class="col">Costo por unidad:</div>
                         <div class="col">${data.articles[i].currency}${data.articles[i].unitCost}<span class="close">&#10005;</span></div>
                     </div>
@@ -102,22 +104,23 @@ function mostrar (data) {
             <div class="col-md-4 summary">
                 
                 <hr>
-                <h5 class="mb-3">Formas de pago</h5>
+                <h5 class="mb-3">Tipo de envío</h5>
+              
                 <div class="d-block my-3">
                   <div class="custom-control custom-radio">
-                    <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
+                    <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" required>
                     <label class="custom-control-label" for="goldradio">Gold (13%)</label>
                   </div>
                   <div class="custom-control custom-radio">
-                    <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" checked=""  required="">
+                    <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required>
                     <label class="custom-control-label" for="premiumradio">Premium (7%)</label>
                   </div>
                   <div class="custom-control custom-radio">
-                    <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
+                    <input id="standardradio" name="publicationType" type="radio" class="custom-control-input"  required>
                     <label class="custom-control-label" for="standardradio">Estándar (3%)</label>
                   </div>
-                  <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Formas de pago</button>
-                <hr class="mb-4">
+              
+                  
                 
               <h4 class="mb-3">Costos</h4>
               <ul class="list-group mb-3">
@@ -149,53 +152,6 @@ function mostrar (data) {
               <span aria-hidden="true">&times;</span>
           </button>
       </div>
-
-      <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Forma de pago</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-            <form action="">
-                    <div class="container">
-                          <div class="custom-control custom-radio">
-                            <input id="creditcard" name="publicationType" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="creditcard">Tarjeta de crédito</label>
-                </div>
-              </div>
-            
-              <label>Número de tarjeta : </label>   
-              <input id="cardnumberInput" type="password" placeholder="Número de tarjeta" name="cardnumber" required/> 
-              
-              <br>
-
-             <label>Código de seguridad: </label>   
-              <input id="passwordInput" type="password" placeholder="Código de seguridad" name="codenumber" required/> 
-      <br>
-              <label>Vencimiento: </label>   
-              <input id="duedateInput" type="duedate" placeholder="MM/AA" name="duedate" required>
-              
-              <br>
-
-            <div class="custom-control custom-radio">
-                  <input id="wiretransfer" name="publicationType" type="radio" class="custom-control-input" required="">
-                  <label class="custom-control-label" for="wiretransfer"> Transferencia bancaria</label>
-              </input>
-              <br>
-          <label>Número de cuenta: </label>   
-              <input id="numeroDeCuentaInput" type="number" placeholder="Número de cuenta" name="bankaccount" required/> 
-              <div>
-                <button type="submit" class="btn btn-primary" >Guardar datos</button>
-               </div>
-              
-            </form>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-            </div>
           </div>
         </div>
       </div>
@@ -204,8 +160,22 @@ function mostrar (data) {
 				
 		`
 	}
-  
-  
+  document.getElementById('wiretransfer').onclick = function() {
+    document.getElementById('cardnumberInput').disabled = true;
+    document.getElementById('passwordInput').disabled = true;
+    document.getElementById('duedateInput').disabled = true;
+    document.getElementById('numbercount').disabled = false;
+}
+
+document.getElementById('creditcard').onclick = function() {
+  document.getElementById('cardnumberInput').disabled = false;
+  document.getElementById('passwordInput').disabled = false;
+  document.getElementById('duedateInput').disabled = false;
+  document.getElementById('numbercount').disabled = true;
+
+}
+
+
     document.getElementById("table-cart").innerHTML = table;
 	document.getElementById("goldradio").addEventListener("change", function(){
 		console.log("A");
